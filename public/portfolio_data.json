@@ -1,0 +1,600 @@
+[
+  {
+    "slug": "chalo-reisen",
+    "title": "Chalo Reisen",
+    "kind": "Mobile App",
+    "industry": "Travel & Tourism",
+    "image": "assets/travel_app_screen.png",
+    "desc": "Curated cultural and cycling tour booking platform offering authentic journeys across the Himalayas, Rajasthan, and beyond.",
+    "live_link": "https://www.mobrilz.com/portfolio",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio",
+    "technologies": [
+      "Flutter",
+      "Node.js",
+      "Firebase",
+      "Google Maps API"
+    ]
+  },
+  {
+    "slug": "taxiscout24",
+    "title": "Taxiscout24",
+    "kind": "Website",
+    "industry": "Mobility & Aviation",
+    "image": "assets/taxiscout24_home.png",
+    "desc": "Comprehensive on-demand mobility platform uniting intuitive passenger apps with dispatch & driver navigation systems.",
+    "live_link": "https://www.taxiscout24.com/",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/taxiscout24",
+    "technologies": [
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "Laravel",
+      "REST API"
+    ]
+  },
+  {
+    "slug": "programmatic-solutions",
+    "title": "Programmatic Solutions",
+    "kind": "Website",
+    "industry": "Enterprise & Corporate",
+    "image": "assets/programmatic_solutions_home.png",
+    "desc": "High-performance enterprise web platform tailored for digital marketing automation and ad-tech programmatic solutions.",
+    "live_link": "https://www.programmaticsolutions.net/",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/programmatic-solutions",
+    "technologies": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "AWS",
+      "GraphQL"
+    ]
+  },
+  {
+    "slug": "living-art",
+    "title": "Living Art",
+    "kind": "Website",
+    "industry": "Lifestyle, Art & Culture",
+    "image": "assets/living_art_home.png",
+    "desc": "Immersive luxury interior art & design gallery platform featuring high-resolution showcases and bespoke custom ordering.",
+    "live_link": "https://livingart.sg/",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/living-art",
+    "technologies": [
+      "WordPress",
+      "WooCommerce",
+      "PHP",
+      "Tailwind CSS",
+      "MySQL"
+    ]
+  },
+  {
+    "slug": "marolima-asset-management",
+    "title": "MAROLIMA ASSET MANAGEMENT",
+    "kind": "Website",
+    "industry": "FinTech & Asset Management",
+    "image": "assets/marolima_home.png",
+    "desc": "Sophisticated financial management portal presenting private wealth portfolios, client dashboards, and market insights.",
+    "live_link": "https://marolima.com/",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/marolima-asset-management",
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Python",
+      "PostgreSQL"
+    ]
+  },
+  {
+    "slug": "mykoreme",
+    "title": "myKoreme",
+    "kind": "Mobile App",
+    "industry": "Health & Telemedicine",
+    "image": "assets/patient_health_app_screen.png",
+    "desc": "Comprehensive patient health and therapy optimization app providing personalized wellness tracking, bloodwork management, and prescription reminders.",
+    "live_link": "https://www.mobrilz.com/portfolio",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio",
+    "technologies": [
+      "React Native",
+      "TypeScript",
+      "Node.js",
+      "HIPAA Cloud",
+      "MongoDB"
+    ]
+  },
+  {
+    "slug": "sf-50-flight-support",
+    "title": "SF50 Flight Support",
+    "kind": "Website",
+    "industry": "Mobility & Aviation",
+    "image": "assets/sf50_home.png",
+    "desc": "Specialized aviation support and operations management platform for Cirrus Vision SF50 pilots, operators, and fleets.",
+    "live_link": "https://www.sf50flightsupport.com/",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/sf-50-flight-support",
+    "technologies": [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "Vercel",
+      "Sanity CMS"
+    ]
+  },
+  {
+    "slug": "hyfil-green",
+    "title": "HyfilGreen",
+    "kind": "Website",
+    "industry": "E-Commerce & Retail",
+    "image": "assets/hyfilgreen_home.png",
+    "desc": "CleanTech e-commerce and B2B catalog showcasing sustainable, eco-friendly water purification and filtration systems.",
+    "live_link": "https://www.youtube.com/@Mobrilz",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/hyfil-green",
+    "technologies": [
+      "WordPress",
+      "PHP",
+      "Tailwind CSS",
+      "MySQL",
+      "SEO Engine"
+    ]
+  },
+  {
+    "slug": "ccg-athletics",
+    "title": "CCG Athletics",
+    "kind": "Mobile App",
+    "industry": "Sports & Fitness",
+    "image": "assets/ccg_app_screen.png",
+    "desc": "Feature-rich athletic mobile app engineered for customized training regimens, community leaderboard tracking, and gym memberships.",
+    "live_link": "https://www.youtube.com/@Mobrilz",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/ccg-athletics",
+    "technologies": [
+      "Flutter",
+      "Firebase",
+      "Stripe API",
+      "Cloud Functions"
+    ]
+  },
+  {
+    "slug": "xed-solutions",
+    "title": "XED Solutions",
+    "kind": "Website",
+    "industry": "Enterprise & Corporate",
+    "image": "https://res.cloudinary.com/dbsbesrlu/image/upload/v1756125712/Screenshot_2025_08_25_174605_51457bb42b.png",
+    "desc": "Executive education and corporate strategy hub providing premier leadership programs for Fortune 500 enterprises.",
+    "live_link": "https://www.youtube.com/@Mobrilz",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/xed-solutions",
+    "technologies": [
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "Node.js"
+    ]
+  },
+  {
+    "slug": "challanger",
+    "title": "Challanger",
+    "kind": "Mobile App",
+    "industry": "Sports & Fitness",
+    "image": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=800&auto=format&fit=crop&q=85",
+    "desc": "Dynamic gamified fitness challenge mobile application motivating users through peer competitions and milestone achievements.",
+    "live_link": "https://www.challanger.net/",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/challanger",
+    "technologies": [
+      "Flutter",
+      "Node.js",
+      "PostgreSQL",
+      "Socket.io"
+    ]
+  },
+  {
+    "slug": "avail-supermarket",
+    "title": "Avail Supermarket",
+    "kind": "Website",
+    "industry": "E-Commerce & Retail",
+    "image": "https://res.cloudinary.com/dbsbesrlu/image/upload/v1756119519/Screenshot_2025_08_25_161214_84b13ef052.png",
+    "desc": "Hyperlocal grocery ordering and superstore e-commerce platform delivering instant pantry replenishment and catalog search.",
+    "live_link": "https://www.youtube.com/@Mobrilz",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/avail-supermarket",
+    "technologies": [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Redis",
+      "Stripe"
+    ]
+  },
+  {
+    "slug": "editions-grenier",
+    "title": "Editions Grenier",
+    "kind": "Mobile App",
+    "industry": "Lifestyle, Art & Culture",
+    "image": "https://res.cloudinary.com/dbsbesrlu/image/upload/v1756123127/Screenshot_2025_08_25_165824_a0bb7e2f48.png",
+    "desc": "Interactive digital publication and e-reader mobile app dedicated to literary discovery and independent author showcases.",
+    "live_link": "https://www.editionsgrenier.com/",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/editions-grenier",
+    "technologies": [
+      "WordPress",
+      "PHP",
+      "MySQL",
+      "Multilingual i18n"
+    ]
+  },
+  {
+    "slug": "scholars-education-services",
+    "title": "Scholars Education Services",
+    "kind": "Website",
+    "industry": "Education & Non-Profit",
+    "image": "https://res.cloudinary.com/dbsbesrlu/image/upload/v1754905909/img_scholars_613dd74f2e.png",
+    "desc": "Comprehensive academic portal offering tailored tutoring curricula, test preparation, and university admission consulting.",
+    "live_link": "https://scholarsedu.co.uk/",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/scholars-education-services",
+    "technologies": [
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "PostgreSQL"
+    ]
+  },
+  {
+    "slug": "soul-jewelry",
+    "title": "Soul Jewelry",
+    "kind": "Website",
+    "industry": "E-Commerce & Retail",
+    "image": "https://res.cloudinary.com/dbsbesrlu/image/upload/v1756110958/Screenshot_2025_08_25_135103_7e472f739f.png",
+    "desc": "Elegantly branded e-commerce boutique showcasing handcrafted artisan jewelry, bespoke rings, and customized engraving.",
+    "live_link": "https://www.youtube.com/@Mobrilz",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/soul-jewelry",
+    "technologies": [
+      "Shopify",
+      "Liquid",
+      "Tailwind CSS",
+      "Stripe"
+    ]
+  },
+  {
+    "slug": "asq-professionals",
+    "title": "ASQ Professionals",
+    "kind": "Website",
+    "industry": "Enterprise & Corporate",
+    "image": "https://res.cloudinary.com/dbsbesrlu/image/upload/v1754913932/asq_efef9be682.png",
+    "desc": "Corporate consulting platform showcasing auditing services, industry compliance solutions, and quality management advisory.",
+    "live_link": "https://www.youtube.com/@Mobrilz",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/asq-professionals",
+    "technologies": [
+      "WordPress",
+      "PHP",
+      "MySQL",
+      "Tailwind CSS"
+    ]
+  },
+  {
+    "slug": "b-i-a-ident",
+    "title": "B.I.A. IDENT",
+    "kind": "Website",
+    "industry": "Enterprise & Corporate",
+    "image": "https://res.cloudinary.com/dbsbesrlu/image/upload/v1754912663/bia_a86ffb9640.png",
+    "desc": "Cutting-edge digital identity and biometric verification portal engineered for secure onboarding and corporate compliance.",
+    "live_link": "https://bia-ident.groupebia.com/",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/b-i-a-ident",
+    "technologies": [
+      "Vue.js",
+      "Tailwind CSS",
+      "Laravel",
+      "MySQL"
+    ]
+  },
+  {
+    "slug": "cigarrete-tabacaria",
+    "title": "Cigarrete Tabacaria",
+    "kind": "Website",
+    "industry": "E-Commerce & Retail",
+    "image": "https://res.cloudinary.com/dbsbesrlu/image/upload/v1756112390/Screenshot_2025_08_25_142419_f9e9e87e57.png",
+    "desc": "Curated lifestyle catalog and digital retail showcase presenting premium accessories and specialty tobacco supplies.",
+    "live_link": "https://cigarretetabacaria.com/",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/cigarrete-tabacaria",
+    "technologies": [
+      "WooCommerce",
+      "WordPress",
+      "PHP",
+      "MySQL"
+    ]
+  },
+  {
+    "slug": "eduka",
+    "title": "Eduka",
+    "kind": "Website",
+    "industry": "Education & Non-Profit",
+    "image": "https://res.cloudinary.com/dbsbesrlu/image/upload/v1751979770/Screenshot_2025_07_08_182311_b69e83181e.png",
+    "desc": "Next-generation digital learning and academy management system facilitating interactive courses and student performance tracking.",
+    "live_link": "https://www.youtube.com/@Mobrilz",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/eduka",
+    "technologies": [
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "Node.js"
+    ]
+  },
+  {
+    "slug": "fast-lighting-supply-fls",
+    "title": "Fast Lighting Supply (FLS)",
+    "kind": "Website",
+    "industry": "E-Commerce & Retail",
+    "image": "https://res.cloudinary.com/dbsbesrlu/image/upload/v1755868482/fast_light_4c9ea1a525.png",
+    "desc": "Robust B2B/B2C electrical supply storefront featuring bulk purchasing, lighting specifications, and fast logistics.",
+    "live_link": "https://www.fastlightingsupply.com/",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/fast-lighting-supply-fls",
+    "technologies": [
+      "Shopify Plus",
+      "Liquid",
+      "Tailwind CSS"
+    ]
+  },
+  {
+    "slug": "i-corp-security",
+    "title": "ICorp Security",
+    "kind": "Website",
+    "industry": "Enterprise & Corporate",
+    "image": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=1400&auto=format&fit=crop&q=85",
+    "desc": "Custom website designed and engineered for ICorp Security.",
+    "live_link": "https://www.icorpsecurity.com.au/",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/i-corp-security",
+    "technologies": [
+      "WordPress",
+      "PHP",
+      "Tailwind CSS",
+      "MySQL"
+    ]
+  },
+  {
+    "slug": "julianets",
+    "title": "Julianets",
+    "kind": "Website",
+    "industry": "Enterprise & Corporate",
+    "image": "https://res.cloudinary.com/dbsbesrlu/image/upload/v1756113910/Screenshot_2025_08_25_145238_241fd52359.png",
+    "desc": "Digital networking and telecommunication portal connecting regional business clients with bespoke broadband and IT services.",
+    "live_link": "https://www.youtube.com/@Mobrilz",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/julianets",
+    "technologies": [
+      "React",
+      "Next.js",
+      "Tailwind CSS"
+    ]
+  },
+  {
+    "slug": "lavacorners-ie",
+    "title": "Lavacorners.ie",
+    "kind": "Website",
+    "industry": "E-Commerce & Retail",
+    "image": "https://res.cloudinary.com/dbsbesrlu/image/upload/v1756105490/Screenshot_2025_08_25_123311_53db739699.png",
+    "desc": "Irish specialty lifestyle e-commerce destination with seamless checkout and localized courier integrations.",
+    "live_link": "https://www.youtube.com/@Mobrilz",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/lavacorners-ie",
+    "technologies": [
+      "React",
+      "Node.js",
+      "Tailwind CSS",
+      "MongoDB"
+    ]
+  },
+  {
+    "slug": "le-jardin-lilongwe",
+    "title": "Le Jardin Lilongwe",
+    "kind": "Website",
+    "industry": "Lifestyle, Art & Culture",
+    "image": "https://res.cloudinary.com/dbsbesrlu/image/upload/v1756115973/Screenshot_2025_08_25_151900_9c7a4866d0.png",
+    "desc": "Boutique restaurant and hospitality website featuring seasonal fine dining menus, event hosting, and table reservations.",
+    "live_link": "https://www.youtube.com/@Mobrilz",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/le-jardin-lilongwe",
+    "technologies": [
+      "WordPress",
+      "PHP",
+      "Tailwind CSS"
+    ]
+  },
+  {
+    "slug": "loca-fri",
+    "title": "LocaFri",
+    "kind": "Website",
+    "industry": "Mobility & Aviation",
+    "image": "https://res.cloudinary.com/dbsbesrlu/image/upload/v1756098490/imgs_updated_3_5cba481d43.png",
+    "desc": "Streamlined regional car rental and fleet booking platform delivering hassle-free reservations and vehicle selection.",
+    "live_link": "https://locafri.ch/  ",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/loca-fri",
+    "technologies": [
+      "Vue.js",
+      "Node.js",
+      "MongoDB",
+      "Tailwind CSS"
+    ]
+  },
+  {
+    "slug": "marie-kuijken",
+    "title": "Marie Kuijken",
+    "kind": "Website",
+    "industry": "Lifestyle, Art & Culture",
+    "image": "https://res.cloudinary.com/dbsbesrlu/image/upload/v1756188426/Screenshot_2025_08_26_102444_ac501fa244.png",
+    "desc": "Refined artistic portfolio highlighting concert tours, classical opera performances, and theatrical stage direction.",
+    "live_link": "https://mariekuijken.com/",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/marie-kuijken",
+    "technologies": [
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "Headless CMS"
+    ]
+  },
+  {
+    "slug": "rdv-medical",
+    "title": "RDV Medical",
+    "kind": "Website",
+    "industry": "Health, Medical & Care",
+    "image": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1400&auto=format&fit=crop&q=85",
+    "desc": "Intuitive healthcare appointment scheduling and medical directory platform connecting patients directly with specialists.",
+    "live_link": "https://www.youtube.com/@Mobrilz",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/rdv-medical",
+    "technologies": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "PostgreSQL"
+    ]
+  },
+  {
+    "slug": "reliable-forecasts",
+    "title": "Reliable Forecasts",
+    "kind": "Website",
+    "industry": "FinTech & Asset Management",
+    "image": "https://res.cloudinary.com/dbsbesrlu/image/upload/v1756107027/Screenshot_2025_08_25_124104_6984eca37c.png",
+    "desc": "Financial and market intelligence platform delivering predictive data models, analytics reports, and trend analysis.",
+    "live_link": "https://reliableforecasts.com/",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/reliable-forecasts",
+    "technologies": [
+      "Python",
+      "Django",
+      "React",
+      "PostgreSQL",
+      "Chart.js"
+    ]
+  },
+  {
+    "slug": "shaifek-school",
+    "title": "Shaifek School",
+    "kind": "Website",
+    "industry": "Education & Non-Profit",
+    "image": "https://res.cloudinary.com/dbsbesrlu/image/upload/v1756189683/Screenshot_2025_08_26_114659_48715b3b49.png",
+    "desc": "Institutional education portal facilitating admissions, parent-teacher collaboration, and interactive school events.",
+    "live_link": "https://tradetyres.co.nz/",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/shaifek-school",
+    "technologies": [
+      "WordPress",
+      "PHP",
+      "LMS Engine",
+      "MySQL"
+    ]
+  },
+  {
+    "slug": "venuexplorer",
+    "title": "Venuexplorer",
+    "kind": "Website",
+    "industry": "FinTech & Asset Management",
+    "image": "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=1400&auto=format&fit=crop&q=85",
+    "desc": "Premier event space discovery platform connecting event planners with corporate venues, halls, and private celebration spots.",
+    "live_link": "https://www.venuexplorer.com.sg/",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/venuexplorer",
+    "technologies": [
+      "Next.js",
+      "React",
+      "Mapbox API",
+      "Node.js",
+      "MongoDB"
+    ]
+  },
+  {
+    "slug": "yadsa",
+    "title": "YADSA",
+    "kind": "Website",
+    "industry": "Education & Non-Profit",
+    "image": "https://res.cloudinary.com/dbsbesrlu/image/upload/v1756103159/Screenshot_2025_08_25_113425_aab42105d0.png",
+    "desc": "Community youth development and sports non-profit portal highlighting athletic mentorship, workshops, and donation programs.",
+    "live_link": "https://www.yadsa.world/",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/yadsa",
+    "technologies": [
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "REST API"
+    ]
+  },
+  {
+    "slug": "yalla-pets",
+    "title": "Yalla Pets",
+    "kind": "Website",
+    "industry": "E-Commerce & Retail",
+    "image": "https://res.cloudinary.com/dbsbesrlu/image/upload/v1756118039/Screenshot_2025_08_25_155229_3ca5e5c08b.png",
+    "desc": "Delightful pet care e-commerce marketplace featuring veterinary diets, grooming accessories, and doorstep delivery.",
+    "live_link": "https://www.youtube.com/@Mobrilz",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/yalla-pets",
+    "technologies": [
+      "Flutter",
+      "Firebase",
+      "Node.js",
+      "Stripe"
+    ]
+  },
+  {
+    "slug": "zitiziti",
+    "title": "ZITIZITI",
+    "kind": "Website",
+    "industry": "Lifestyle, Art & Culture",
+    "image": "https://res.cloudinary.com/dbsbesrlu/image/upload/v1751977280/ziti_45aaa747dd.jpg",
+    "desc": "Regional multi-category classifieds and local marketplace platform facilitating community peer-to-peer commerce.",
+    "live_link": "https://www.youtube.com/@Mobrilz",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/zitiziti",
+    "technologies": [
+      "React",
+      "Tailwind CSS",
+      "Node.js"
+    ]
+  },
+  {
+    "slug": "zen-marlin",
+    "title": "Zen Marlin",
+    "kind": "Website",
+    "industry": "Lifestyle, Art & Culture",
+    "image": "https://res.cloudinary.com/dbsbesrlu/image/upload/v1754911098/mission_127f05804e.png",
+    "desc": "Charter sportfishing and offshore maritime adventure website offering excursion packages, captains' logs, and gear advice.",
+    "live_link": "https://zenmarlin.com/",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/zen-marlin",
+    "technologies": [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "Three.js"
+    ]
+  },
+  {
+    "slug": "mindto",
+    "title": "Mindto",
+    "kind": "Mobile App",
+    "industry": "Health, Medical & Care",
+    "image": "assets/mindto_screen.png",
+    "desc": "A holistic mental health mobile app offering guided therapy, mood tracking, and direct tele-counseling with certified practitioners.",
+    "live_link": "https://www.mindto.io/",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/mindto",
+    "technologies": [
+      "Flutter",
+      "Node.js",
+      "MongoDB",
+      "AI Assistant API"
+    ]
+  },
+  {
+    "slug": "ayrton-coffee-company",
+    "title": "Ayrton Coffee Company",
+    "kind": "Website",
+    "industry": "E-Commerce & Retail",
+    "image": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1400&auto=format&fit=crop&q=85",
+    "desc": "A modern, artisanal e-commerce storefront crafted for direct-to-consumer specialty coffee subscriptions and brew gear.",
+    "live_link": "https://ayrtoncoffee.com/",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/ayrton-coffee-company",
+    "technologies": [
+      "Shopify Plus",
+      "Liquid",
+      "Tailwind CSS",
+      "JavaScript"
+    ]
+  },
+  {
+    "slug": "child-care",
+    "title": "Child care",
+    "kind": "Mobile App",
+    "industry": "Health, Medical & Care",
+    "image": "https://res.cloudinary.com/dbsbesrlu/image/upload/v1756097276/imgs_updated_5_04543220bd.png",
+    "desc": "Intuitive childcare mobile app connecting parents and caregivers with daily milestones, secure check-ins, and direct messaging.",
+    "live_link": "https://www.flowysis.com/",
+    "mobrilz_url": "https://www.mobrilz.com/portfolio/child-care",
+    "technologies": [
+      "React Native",
+      "Firebase",
+      "Node.js",
+      "Twilio SMS"
+    ]
+  }
+]

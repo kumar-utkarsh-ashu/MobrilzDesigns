@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Antennae -->
+  <line x1="20" y1="22" x2="12" y2="11" stroke="#F59E0B" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="11" cy="9.5" r="3.5" fill="#CBD5E1"/>
+  <line x1="15" y1="39" x2="7" y2="45" stroke="#F59E0B" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="5.5" cy="46.5" r="3.5" fill="#CBD5E1"/>
+  <line x1="36" y1="27" x2="43" y2="23" stroke="#F59E0B" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="44.5" cy="22" r="2.8" fill="#CBD5E1"/>
+  <!-- Helmet Base Pads -->
+  <path d="M16 24C18 20 22 19 25 21" stroke="#CBD5E1" stroke-width="4" stroke-linecap="round"/>
+  <path d="M13 34C11 38 13 42 16 43" stroke="#CBD5E1" stroke-width="4" stroke-linecap="round"/>
+  <!-- Helmet C-Shape -->
+  <path d="M21 41C13 36 13 24 23 20C31 17 38 22 37 32" stroke="#E2E8F0" stroke-width="7.5" stroke-linecap="round" fill="none"/>
+  <!-- Hapi Wordmark in Crisp White -->
+  <text x="38" y="49" text-anchor="middle" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="19" letter-spacing="0.5">hapi</text>
+</svg>

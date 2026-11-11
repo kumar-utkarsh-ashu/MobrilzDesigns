@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" fill="none">
+  <defs>
+    <filter id="pd_glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <circle cx="200" cy="95" r="85" fill="#06b6d4" fill-opacity="0.15" filter="url(#pd_glow)"/>
+
+  <!-- Interactive User Flow Connections -->
+  <path d="M140 100 C170 100, 180 60, 210 60" stroke="#06b6d4" stroke-width="2" stroke-linecap="round"/>
+  <path d="M140 100 C170 100, 180 140, 210 140" stroke="#06b6d4" stroke-width="2" stroke-dasharray="3 3"/>
+
+  <!-- Screen 1: User Onboarding Card -->
+  <g transform="translate(70, 55)" filter="url(#pd_glow)">
+    <rect width="80" height="95" rx="8" fill="#0b1739" stroke="#06b6d4" stroke-width="1.2"/>
+    <rect x="10" y="12" width="60" height="30" rx="4" fill="#0e7490" fill-opacity="0.3"/>
+    <circle cx="40" cy="27" r="8" fill="#06b6d4"/>
+    <rect x="10" y="52" width="50" height="4" rx="2" fill="#e2e8f0"/>
+    <rect x="10" y="60" width="35" height="3" rx="1.5" fill="#94a3b8"/>
+    <rect x="10" y="74" width="60" height="12" rx="4" fill="#06b6d4"/>
+  </g>
+
+  <!-- Screen 2: Dashboard State Card -->
+  <g transform="translate(210, 25)">
+    <rect width="90" height="70" rx="8" fill="#0b1739" stroke="#38bdf8" stroke-opacity="0.5"/>
+    <rect x="10" y="10" width="30" height="5" rx="2" fill="#38bdf8"/>
+    <path d="M10 50 L30 35 L50 42 L80 25" stroke="#06b6d4" stroke-width="2" fill="none"/>
+  </g>
+
+  <!-- Screen 3: Success Completion Card -->
+  <g transform="translate(210, 105)">
+    <rect width="90" height="65" rx="8" fill="#0b1739" stroke="#10b981" stroke-opacity="0.5"/>
+    <circle cx="25" cy="32" r="10" fill="#10b981" fill-opacity="0.25"/>
+    <path d="M20 32 L24 36 L31 28" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/>
+    <rect x="42" y="26" width="38" height="5" rx="2" fill="#ffffff"/>
+    <rect x="42" y="34" width="24" height="4" rx="2" fill="#64748b"/>
+  </g>
+</svg>

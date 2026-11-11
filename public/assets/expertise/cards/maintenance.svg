@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" fill="none">
+  <defs>
+    <filter id="mt_glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <circle cx="200" cy="100" r="85" fill="#10b981" fill-opacity="0.15" filter="url(#mt_glow)"/>
+
+  <!-- Central Speedometer / Health Gauge -->
+  <g transform="translate(140, 35)" filter="url(#mt_glow)">
+    <path d="M20 95 A 50 50 0 1 1 100 95" stroke="#1e293b" stroke-width="9" stroke-linecap="round" fill="none"/>
+    <path d="M20 95 A 50 50 0 1 1 92 40" stroke="#10b981" stroke-width="9" stroke-linecap="round" fill="none"/>
+    <circle cx="60" cy="75" r="5" fill="#ffffff"/>
+    <line x1="60" y1="75" x2="85" y2="45" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Uptime Percentage Badge -->
+    <rect x="35" y="85" width="50" height="18" rx="5" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="60" y="98" fill="#34d399" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">99.99%</text>
+  </g>
+
+  <!-- Real-Time Heartbeat Telemetry Line -->
+  <path d="M40 145 L110 145 L125 125 L140 165 L155 135 L170 145 L230 145 L245 125 L260 160 L275 145 L360 145" 
+        stroke="#10b981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#mt_glow)"/>
+</svg>
