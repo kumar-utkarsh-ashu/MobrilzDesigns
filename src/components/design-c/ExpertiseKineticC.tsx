@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useRef, useEffect } from "react";
 import {
   Globe,
   Smartphone,
@@ -13,9 +12,11 @@ import {
   Terminal,
   Layers,
   Sparkles,
+  CheckCircle2,
 } from "lucide-react";
 import { RollText } from "@/components/motion/RollText";
 import { MagneticWrapper } from "@/components/motion/MagneticWrapper";
+import { gsap, ScrollTrigger } from "@/lib/motion/gsap";
 
 interface ServiceTab {
   id: string;
@@ -98,85 +99,142 @@ const mutationQueue = new OfflineSyncQueue({
       "Comprehensive Datadog & Prometheus APM",
     ],
     metrics: [
-      { label: "Deployment Downtime", value: "0 ms" },
-      { label: "Failover RTO", value: "< 30s" },
-      { label: "Cloud Cost Reduction", value: "35%" },
+      { label: "Pipeline Velocity", value: "< 3 Min" },
+      { label: "Availability SLA", value: "99.99%" },
+      { label: "Recovery Time (RTO)", value: "< 30s" },
     ],
-    codeSnippet: `// Terraform Blue-Green Cutover Spec
-resource "aws_route53_record" "traffic_split" {
-  zone_id = aws_route53_zone.primary.zone_id
-  name    = "api.enterprise.com"
-  type    = "A"
-  weighted_routing_policy {
-    weight = var.blue_weight // Graceful drain to green
+    codeSnippet: `// Terraform Blue/Green Cutover Ingress
+resource "kubernetes_ingress_v1" "api_gateway" {
+  metadata {
+    name = "mobrilz-enterprise-gateway"
+    annotations = {
+      "alb.ingress.kubernetes.io/target-type" = "ip"
+      "alb.ingress.kubernetes.io/scheme"      = "internet-facing"
+    }
   }
 }`,
   },
   {
     id: "ai",
-    name: "Enterprise AI & MCP",
+    name: "AI & MCP Agents",
     icon: <Cpu className="w-5 h-5" />,
-    tagline: "Agentic Workflows, pgvector RAG & Model Context Protocols",
+    tagline: "Model Context Protocol & Custom Neural Pipelines",
     description:
-      "Autonomous conversational shopping advisors, multi-tenant vector retrieval pipelines, and private LLM fine-tuning compliant with enterprise data sovereignty.",
+      "Architecting autonomous LLM agents, hybrid pgvector embeddings, and enterprise Model Context Protocol (MCP) servers for continuous task orchestration.",
     deliverables: [
-      "Custom MCP Tool Servers & Connectors",
-      "Hybrid Semantic + SQL Vector Search (pgvector)",
-      "Streaming SSE Conversational Widgets",
-      "Zero-Data-Retention Sovereign AI Pipelines",
+      "Enterprise Anthropic MCP Server Architecture",
+      "Hybrid RAG with Relational & pgvector Indexes",
+      "Sub-30ms Streaming SSE Inference Pipes",
+      "Strict Output Validation & PII Redaction",
     ],
     metrics: [
-      { label: "Query Retrieval Latency", value: "< 35ms" },
-      { label: "Streaming Token Speed", value: "95 tok/s" },
-      { label: "Vector Precision", value: "94.8%" },
+      { label: "Inference Latency", value: "< 28ms" },
+      { label: "Context Window", value: "128k Tokens" },
+      { label: "Hallucination Defense", value: "99.8%" },
     ],
-    codeSnippet: `// Sovereign Agentic Vector Tool Execution
-@router.post("/v1/agent/query")
-async def execute_mcp_query(req: MCPRequest):
-    embedding = await embed_text(req.prompt)
-    results = await pgvector.hybrid_search(
-        embedding=embedding,
-        filters={"tenant_id": req.tenant_id},
-        top_k=5
-    )
-    return StreamingResponse(stream_agent_tokens(results))`,
+    codeSnippet: `// Enterprise Model Context Protocol Tool Server
+server.setRequestHandler(CallToolRequestSchema, async (request) => {
+  if (request.params.name === "search_tenant_vector") {
+    const embeddings = await embedder.encode(request.params.arguments.query);
+    return await vectorStore.queryNearest({ vector: embeddings, k: 5 });
+  }
+});`,
   },
 ];
 
 export function ExpertiseKineticC() {
   const [activeTab, setActiveTab] = useState<string>("web");
-  const selected = serviceTabs.find((t) => t.id === activeTab) || serviceTabs[0];
+  const sectionRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const current = serviceTabs.find((t) => t.id === activeTab) || serviceTabs[0];
+
+  // GSAP Smooth Tab Change Transition
+  useEffect(() => {
+    if (!contentRef.current) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".gsap-deliverable-item",
+        { opacity: 0.2, x: -12 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.4,
+          stagger: 0.05,
+          ease: "power2.out",
+          clearProps: "all",
+        }
+      );
+
+      gsap.fromTo(
+        ".gsap-code-box",
+        { opacity: 0.3, y: 12 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.45,
+          ease: "power2.out",
+          clearProps: "all",
+        }
+      );
+
+      gsap.fromTo(
+        ".gsap-metric-box",
+        { scale: 0.95 },
+        {
+          scale: 1,
+          duration: 0.35,
+          stagger: 0.06,
+          ease: "back.out(1.4)",
+          clearProps: "all",
+        }
+      );
+    }, contentRef);
+
+    return () => ctx.revert();
+  }, [activeTab]);
 
   return (
-    <section className="relative z-20 w-full py-28 bg-[#060d28] col-lines overflow-hidden">
+    <section
+      ref={sectionRef}
+      id="services"
+      className="relative z-20 w-full py-28 bg-[#060d28] col-lines overflow-hidden"
+    >
+      {/* Background Volumetric Glows */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-[#3779cb]/15 blur-[170px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-cyan-500/15 blur-[170px]" />
+      </div>
+
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 font-mono text-xs mb-4">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Core Engineering Capabilities</span>
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 font-mono text-xs mb-3 shadow-[0_0_15px_rgba(6,182,212,0.25)]">
+            <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+            <span>Digital Engineering Matrix</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            High-Performance Digital Architecture
+            Engineered for High-Velocity Execution
           </h2>
-          <p className="text-slate-400 text-sm sm:text-base mt-3 font-light">
-            Modular, scalable engineering contracts designed for high-concurrency systems and zero operational downtime.
+          <p className="text-slate-300 text-sm sm:text-base mt-2 font-light">
+            From edge-rendered cloud microservices to multi-tenant AI pipelines.
           </p>
         </div>
 
         {/* Tab Switcher Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
           {serviceTabs.map((tab) => {
             const isActive = tab.id === activeTab;
             return (
-              <MagneticWrapper key={tab.id} strength={0.2}>
+              <MagneticWrapper key={tab.id} strength={0.25}>
                 <button
                   type="button"
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2.5 px-5 py-3 rounded-full text-xs font-mono font-bold tracking-wider uppercase transition-all duration-300 ${
+                  className={`flex items-center gap-2.5 px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold transition-all duration-300 ${
                     isActive
-                      ? "bg-gradient-to-r from-cyan-500 to-[#3779cb] text-white shadow-[0_8px_25px_rgba(55,121,203,0.4)] scale-105"
-                      : "bg-[#09143f]/80 text-slate-400 hover:text-white border border-white/10 hover:border-white/20"
+                      ? "bg-gradient-to-r from-cyan-500 to-[#3779cb] text-slate-950 shadow-[0_0_25px_rgba(6,182,212,0.5)] font-bold scale-105"
+                      : "bg-[#09143f]/80 text-slate-300 hover:text-white border border-white/10 hover:border-cyan-400/40"
                   }`}
                 >
                   {tab.icon}
@@ -187,90 +245,82 @@ export function ExpertiseKineticC() {
           })}
         </div>
 
-        {/* Interactive Holographic Spec Sheet Card */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={selected.id}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-8 p-8 md:p-12 rounded-3xl bg-[#09143f]/70 border border-white/15 backdrop-blur-2xl shadow-[0_30px_70px_rgba(0,0,0,0.6)]"
-          >
-            {/* Left Column: Spec & Deliverables */}
-            <div className="lg:col-span-7 space-y-6 flex flex-col justify-between">
-              <div>
-                <span className="text-xs font-mono uppercase tracking-widest text-cyan-400">
-                  Architectural Specification
+        {/* Active Tab Panel */}
+        <div
+          ref={contentRef}
+          className="relative rounded-[32px] bg-[#09143f]/80 border border-white/15 p-6 sm:p-10 backdrop-blur-2xl shadow-2xl overflow-hidden transition-all duration-300 hover:border-cyan-400/40"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Left Column: Spec, Deliverables, Metrics */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="space-y-2">
+                <span className="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider">
+                  {current.name} • Architecture Spec
                 </span>
-                <h3 className="text-2xl sm:text-3xl font-bold text-white mt-1 mb-3">
-                  {selected.tagline}
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+                  {current.tagline}
                 </h3>
-                <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
-                  {selected.description}
+                <p className="text-slate-300 text-sm sm:text-base font-light leading-relaxed">
+                  {current.description}
                 </p>
               </div>
 
-              {/* Deliverable Checkpoints */}
-              <div className="space-y-3 pt-2">
+              {/* Deliverables Checklist */}
+              <div className="space-y-2.5">
                 <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400">
-                  Production Deliverables:
+                  Core Enterprise Deliverables
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {selected.deliverables.map((item, idx) => (
+                  {current.deliverables.map((del, i) => (
                     <div
-                      key={idx}
-                      className="flex items-center gap-2 p-2.5 rounded-xl bg-white/5 border border-white/5 text-xs text-slate-200"
+                      key={i}
+                      className="gsap-deliverable-item flex items-center gap-2 text-xs sm:text-sm text-slate-200"
                     >
-                      <Zap className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
-                      <span>{item}</span>
+                      <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0" />
+                      <span>{del}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Verified SLA Metrics */}
-              <div className="pt-4 border-t border-white/10 grid grid-cols-3 gap-4">
-                {selected.metrics.map((m, idx) => (
-                  <div key={idx} className="space-y-1">
-                    <span className="text-xs font-mono text-slate-400 block">{m.label}</span>
-                    <span className="text-xl sm:text-2xl font-black text-cyan-300 tracking-tight">
+              {/* Verified Metrics Cards */}
+              <div className="grid grid-cols-3 gap-3 pt-3 border-t border-white/10">
+                {current.metrics.map((m, idx) => (
+                  <div
+                    key={idx}
+                    className="gsap-metric-box p-3 rounded-2xl bg-white/5 border border-white/10 text-center hover:border-cyan-400/40 transition-colors"
+                  >
+                    <span className="block text-lg sm:text-2xl font-black text-cyan-300 font-mono">
                       {m.value}
+                    </span>
+                    <span className="block text-[10px] sm:text-xs text-slate-400 font-mono mt-0.5">
+                      {m.label}
                     </span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Right Column: Live Terminal Code Stream */}
-            <div className="lg:col-span-5 flex flex-col justify-between rounded-2xl bg-[#060d28]/90 border border-white/10 overflow-hidden font-mono text-xs shadow-inner">
-              <div className="flex items-center justify-between px-4 py-3 bg-white/5 border-b border-white/10">
-                <div className="flex items-center gap-2">
-                  <Terminal className="w-3.5 h-3.5 text-cyan-400" />
-                  <span className="text-slate-300 text-[11px]">runtime-contract.ts</span>
+            {/* Right Column: Code Specification Pane */}
+            <div className="gsap-code-box lg:col-span-5">
+              <div className="rounded-2xl bg-[#030718] border border-cyan-500/30 p-4 font-mono text-xs overflow-hidden shadow-2xl">
+                <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/10 text-slate-400 text-[11px]">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-500" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-green-500" />
+                    <span className="text-slate-300 ml-1">spec.contract.ts</span>
+                  </div>
+                  <span className="text-cyan-400 font-bold">TypeScript Strict</span>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <span className="h-2 w-2 rounded-full bg-rose-500/80" />
-                  <span className="h-2 w-2 rounded-full bg-amber-500/80" />
-                  <span className="h-2 w-2 rounded-full bg-emerald-500/80" />
-                </div>
-              </div>
-
-              <div className="p-4 text-slate-300 leading-relaxed overflow-x-auto text-[11px]">
-                <pre>
-                  <code>{selected.codeSnippet}</code>
+                <pre className="text-slate-300 overflow-x-auto p-2 leading-relaxed text-[11px]">
+                  <code>{current.codeSnippet}</code>
                 </pre>
               </div>
-
-              <div className="px-4 py-3 bg-white/5 border-t border-white/10 flex items-center justify-between text-[10px] text-slate-400">
-                <span>Status: Verified In Production</span>
-                <span className="text-emerald-400">● 100% Type Safe</span>
-              </div>
             </div>
-          </motion.div>
-        </AnimatePresence>
+          </div>
+        </div>
       </div>
     </section>
   );
 }
-

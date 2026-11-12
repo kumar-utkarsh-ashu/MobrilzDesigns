@@ -21,11 +21,11 @@ export function Mobrilz3DHeroStage({ onOpenEstimator }: Mobrilz3DHeroStageProps)
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [18, -18]), {
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [16, -16]), {
     stiffness: 180,
     damping: 20,
   });
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-22, 22]), {
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-20, 20]), {
     stiffness: 180,
     damping: 20,
   });
@@ -56,7 +56,7 @@ export function Mobrilz3DHeroStage({ onOpenEstimator }: Mobrilz3DHeroStageProps)
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Mode Theme Gradients
+  // Theme Gradients
   const bgGradient =
     lightingMode === "day"
       ? "radial-gradient(ellipse at 50% 40%, #0d2868 0%, #060d28 70%, #020617 100%)"
@@ -71,20 +71,28 @@ export function Mobrilz3DHeroStage({ onOpenEstimator }: Mobrilz3DHeroStageProps)
       ? "from-rose-500 via-purple-500 to-amber-500"
       : "from-cyan-400 via-[#3779cb] to-indigo-500";
 
+  // Cinematic Zoom-Through Calculation (Image 1 Refinement)
+  // Logo scales up exponentially while scrolling (scale: 1 -> 9.5) and then fades out
+  const logoScale = 1 + Math.pow(scrollProgress, 1.6) * 8.5;
+  const logoOpacity =
+    scrollProgress < 0.2
+      ? 1
+      : Math.max(0, 1 - (scrollProgress - 0.2) / 0.45);
+
   return (
     <section
       ref={containerRef}
       id="hero"
       className="relative z-10 w-full"
       style={{ height: "370svh" }}
-      aria-label="Mobrilz Authentic 3D Kinetic Hero Stage"
+      aria-label="Mobrilz Cinematic 3D Kinetic Hero Stage"
     >
       {/* Sticky Viewport Stage (100svh) */}
       <div
         className="sticky top-0 h-[100svh] w-full overflow-hidden flex flex-col items-center justify-center transition-all duration-700 select-none"
         style={{ background: bgGradient }}
       >
-        {/* Background Floating Cosmic Dust Particles */}
+        {/* Ambient Cosmic Particles Dispersing with Scroll */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden z-0">
           {[...Array(40)].map((_, i) => (
             <span
@@ -95,23 +103,25 @@ export function Mobrilz3DHeroStage({ onOpenEstimator }: Mobrilz3DHeroStageProps)
                 height: `${(i % 3) + 1.5}px`,
                 top: `${(i * 17) % 100}%`,
                 left: `${(i * 23) % 100}%`,
+                transform: `scale(${1 + scrollProgress * 2})`,
+                opacity: Math.max(0.1, 1 - scrollProgress * 1.2),
                 animationDuration: `${(i % 4) + 2}s`,
-                animationDelay: `${(i % 3) * 0.7}s`,
               }}
             />
           ))}
         </div>
 
         {/* ============================================================== */}
-        {/* CENTERPIECE: AUTHENTIC ORIGINAL MOBRILZ LOGO IN 3D PERSPECTIVE */}
+        {/* CENTERPIECE: CINEMATIC LOGO ZOOM-THROUGH (IMAGE 1 SPEC)        */}
         {/* ============================================================== */}
         <div
           className="relative z-10 flex flex-col items-center justify-center pointer-events-none my-4"
           style={{
-            perspective: 1200,
-            transform: `translateY(${scrollProgress * 60}px) scale(${1 - scrollProgress * 0.25})`,
-            opacity: Math.max(0.15, 1 - scrollProgress * 1.5),
-            transition: "transform 0.1s linear, opacity 0.2s linear",
+            perspective: 1400,
+            transform: `scale(${logoScale})`,
+            opacity: logoOpacity,
+            willChange: "transform, opacity",
+            transition: "transform 0.08s ease-out, opacity 0.1s ease-out",
           }}
         >
           <motion.div
@@ -120,19 +130,25 @@ export function Mobrilz3DHeroStage({ onOpenEstimator }: Mobrilz3DHeroStageProps)
           >
             {/* Luminous Pulsating Ambient Aura */}
             <div
-              className={`absolute -inset-10 rounded-full bg-gradient-to-r ${glowColor} opacity-50 blur-3xl animate-pulse pointer-events-none`}
+              className={`absolute -inset-12 rounded-full bg-gradient-to-r ${glowColor} opacity-55 blur-3xl animate-pulse pointer-events-none`}
             />
 
             {/* Orbiting Kinetic Rings */}
-            <div className="absolute w-56 h-56 sm:w-72 sm:h-72 rounded-full border border-cyan-400/30 animate-[spin_24s_linear_infinite] pointer-events-none" />
-            <div className="absolute w-48 h-48 sm:w-60 sm:h-60 rounded-full border border-dashed border-sky-300/25 animate-[spin_18s_linear_infinite_reverse] pointer-events-none" />
+            <div
+              className="absolute w-56 h-56 sm:w-72 sm:h-72 rounded-full border border-cyan-400/35 pointer-events-none animate-[spin_26s_linear_infinite]"
+              style={{ transform: `rotate(${scrollProgress * 180}deg)` }}
+            />
+            <div
+              className="absolute w-44 h-44 sm:w-56 sm:h-56 rounded-full border border-dashed border-sky-300/30 pointer-events-none animate-[spin_20s_linear_infinite_reverse]"
+              style={{ transform: `rotate(-${scrollProgress * 140}deg)` }}
+            />
 
             {/* Authentic Original Mobrilz "M" Logo */}
-            <div className="relative w-36 h-24 sm:w-48 sm:h-32 flex items-center justify-center filter drop-shadow-[0_15px_35px_rgba(6,182,212,0.8)]">
+            <div className="relative w-36 h-24 sm:w-48 sm:h-32 flex items-center justify-center filter drop-shadow-[0_15px_35px_rgba(6,182,212,0.85)]">
               <img
                 src="/assets/mobrilz-m-logo.svg"
                 alt="Mobrilz Authentic Brand Logo"
-                className="w-full h-full object-contain filter drop-shadow-[0_0_20px_rgba(100,181,246,0.9)]"
+                className="w-full h-full object-contain filter drop-shadow-[0_0_24px_rgba(100,181,246,0.95)]"
               />
             </div>
           </motion.div>
@@ -145,18 +161,18 @@ export function Mobrilz3DHeroStage({ onOpenEstimator }: Mobrilz3DHeroStageProps)
           className="absolute inset-0 flex flex-col items-center justify-between px-6 py-20 md:py-28 pointer-events-none z-20 transition-opacity duration-300 ease-out"
           style={{
             opacity: scrollProgress < 0.28 ? Math.max(0, 1 - scrollProgress * 3.8) : 0,
-            transform: `translateY(${-scrollProgress * 100}px)`,
+            transform: `translateY(${-scrollProgress * 120}px)`,
           }}
         >
           {/* Eyebrow Pill */}
           <div className="pointer-events-auto">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/70 border border-cyan-400/50 backdrop-blur-xl text-xs font-mono font-bold text-cyan-300 shadow-[0_0_25px_rgba(6,182,212,0.4)]">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-400/50 backdrop-blur-xl text-xs font-mono font-bold text-cyan-300 shadow-[0_0_25px_rgba(6,182,212,0.4)]">
               <span className="h-2 w-2 rounded-full bg-cyan-400 animate-ping" />
               Award-Winning Enterprise Engineering
             </span>
           </div>
 
-          {/* Monumental Headline with High Contrast */}
+          {/* Monumental Headline */}
           <div className="text-center max-w-4xl mx-auto space-y-4">
             <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white leading-[1.08] drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
               Architecting Digital Titans.

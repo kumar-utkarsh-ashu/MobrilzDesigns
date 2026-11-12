@@ -2,30 +2,38 @@
 
 import { useEffect } from "react";
 import Lenis from "lenis";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export function SmoothScroll() {
   useEffect(() => {
-    // Lenis exponential power-curve easing inspired by evanssmiles & codeofsagar.in
+    if (typeof window === "undefined") return;
+
+    // Register ScrollTrigger safely
+    gsap.registerPlugin(ScrollTrigger);
+
     const lenis = new Lenis({
-      duration: 1.25,
+      duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
       syncTouch: false,
     });
 
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+    // Synchronize Lenis with GSAP ScrollTrigger
+    lenis.on("scroll", ScrollTrigger.update);
 
-    const rafId = requestAnimationFrame(raf);
+    const tickerCallback = (time: number) => {
+      lenis.raf(time * 1000);
+    };
+
+    gsap.ticker.add(tickerCallback);
+    gsap.ticker.lagSmoothing(0);
 
     return () => {
-      cancelAnimationFrame(rafId);
+      gsap.ticker.remove(tickerCallback);
       lenis.destroy();
     };
   }, []);
 
   return null;
 }
-

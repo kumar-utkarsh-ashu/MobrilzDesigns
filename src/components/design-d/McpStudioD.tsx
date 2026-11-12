@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { Terminal, Play, CheckCircle, Cpu, Zap, Database, Cloud } from "lucide-react";
+import React, { useState, useRef } from "react";
+import { Terminal, Play, CheckCircle, Cpu, Zap, Database, Cloud, Sparkles } from "lucide-react";
 import { MagneticWrapper } from "@/components/motion/MagneticWrapper";
 
 interface SimulationScenario {
@@ -73,6 +73,7 @@ export function McpStudioD() {
   const [activeScenario, setActiveScenario] = useState<string>("salla");
   const [isRunning, setIsRunning] = useState(false);
   const [displayedLogs, setDisplayedLogs] = useState<string[]>(scenarios[0].logs);
+  const terminalRef = useRef<HTMLDivElement>(null);
 
   const selected = scenarios.find((s) => s.id === activeScenario) || scenarios[0];
 
@@ -86,151 +87,118 @@ export function McpStudioD() {
         if (index === selected.logs.length - 1) {
           setIsRunning(false);
         }
-      }, (index + 1) * 260);
+      }, (index + 1) * 350);
     });
   };
 
-  const handleSelect = (id: string) => {
+  const handleScenarioChange = (id: string) => {
     setActiveScenario(id);
-    const target = scenarios.find((s) => s.id === id);
-    if (target) {
-      setDisplayedLogs(target.logs);
+    const scen = scenarios.find((s) => s.id === id);
+    if (scen) {
+      setDisplayedLogs(scen.logs);
       setIsRunning(false);
     }
   };
 
   return (
-    <section id="mcp-studio" className="relative z-20 w-full py-28 bg-[#020617] col-lines overflow-hidden">
+    <section
+      id="mcp-studio"
+      className="relative z-20 w-full py-28 bg-[#020617] col-lines overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 font-mono text-xs mb-4">
-            <Terminal className="w-3.5 h-3.5" />
-            <span>Live Architectural Playground</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 font-mono text-xs mb-3 shadow-[0_0_15px_rgba(6,182,212,0.25)]">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Anthropic Model Context Protocol</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
             Interactive Enterprise MCP Studio
           </h2>
-          <p className="text-slate-400 text-sm sm:text-base mt-3 font-light">
-            Test how Mobrilz agentic tools and cloud services operate under simulated production workloads.
+          <p className="text-slate-300 text-sm sm:text-base mt-2 font-light">
+            Test simulated autonomous agent workflows with real-time SSE streaming logs.
           </p>
         </div>
 
-        {/* Studio Console Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left: Scenarios Selector */}
-          <div className="lg:col-span-4 space-y-4">
-            <span className="text-xs font-mono text-slate-400 uppercase tracking-wider block mb-2">
-              Select Architecture Testbed:
-            </span>
-            {scenarios.map((sc) => {
-              const isActive = sc.id === activeScenario;
-              return (
-                <div
-                  key={sc.id}
-                  onClick={() => handleSelect(sc.id)}
-                  className={`p-5 rounded-2xl border cursor-pointer transition-all duration-300 ${
-                    isActive
-                      ? "bg-[#09143f] border-cyan-400/60 shadow-[0_10px_25px_rgba(6,182,212,0.3)]"
-                      : "bg-[#060d28]/60 border-white/10 hover:border-white/20"
+        {/* Terminal Sandbox Card */}
+        <div
+          ref={terminalRef}
+          className="max-w-5xl mx-auto rounded-[32px] bg-gradient-to-b from-[#09143f]/90 to-[#030718]/95 border border-white/20 p-6 sm:p-8 backdrop-blur-2xl shadow-2xl transition-all duration-300 hover:border-cyan-400/50"
+        >
+          {/* Top Control Bar */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+            {/* Scenario Selector Pills */}
+            <div className="flex items-center gap-2 flex-wrap">
+              {scenarios.map((scen) => (
+                <button
+                  key={scen.id}
+                  onClick={() => handleScenarioChange(scen.id)}
+                  className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all ${
+                    activeScenario === scen.id
+                      ? "bg-cyan-500 text-slate-950 font-bold shadow-[0_0_15px_rgba(6,182,212,0.6)]"
+                      : "bg-white/5 text-slate-300 hover:text-white border border-white/10"
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-2 font-bold text-white text-sm">
-                      {sc.icon}
-                      <span>{sc.name}</span>
-                    </div>
-                    <span className="text-[10px] font-mono text-cyan-400 px-2 py-0.5 rounded bg-white/5">
-                      {sc.latency}
-                    </span>
-                  </div>
-                  <p className="text-xs text-slate-400 font-light leading-relaxed">
-                    {sc.description}
-                  </p>
-                </div>
-              );
-            })}
+                  {scen.icon}
+                  <span>{scen.name}</span>
+                </button>
+              ))}
+            </div>
 
-            <div className="p-4 rounded-xl bg-white/5 border border-white/5 text-xs font-mono text-slate-300 space-y-2">
-              <div className="flex items-center justify-between text-[11px]">
-                <span className="text-slate-400">Security Isolation</span>
-                <span className="text-emerald-400">SOC2 Type II</span>
-              </div>
-              <div className="flex items-center justify-between text-[11px]">
-                <span className="text-slate-400">Data Residency</span>
-                <span className="text-cyan-400">Saudi & European VPC</span>
-              </div>
+            {/* Run Button */}
+            <MagneticWrapper strength={0.25}>
+              <button
+                onClick={runSimulation}
+                disabled={isRunning}
+                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-400 to-[#3779cb] hover:from-cyan-300 hover:to-blue-500 text-slate-950 font-mono text-xs font-bold shadow-[0_0_20px_rgba(6,182,212,0.5)] transition-all disabled:opacity-50"
+              >
+                <Play className="w-3.5 h-3.5 fill-current" />
+                <span>{isRunning ? "Running Agent Pipeline..." : "Execute MCP Simulation"}</span>
+              </button>
+            </MagneticWrapper>
+          </div>
+
+          {/* Description & Status */}
+          <div className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono">
+            <span className="text-slate-300 font-light">
+              {selected.description}
+            </span>
+            <div className="flex items-center gap-3 text-cyan-400 flex-shrink-0">
+              <span>Latency: {selected.latency}</span>
+              <span>•</span>
+              <span className="text-emerald-400">Status: {selected.status}</span>
             </div>
           </div>
 
-          {/* Right: Live Interactive Terminal Console */}
-          <div className="lg:col-span-8 rounded-3xl bg-[#030712] border border-white/20 shadow-2xl overflow-hidden font-mono flex flex-col justify-between min-h-[460px]">
-            {/* Terminal Window Header */}
-            <div className="px-5 py-3.5 bg-white/5 border-b border-white/10 flex items-center justify-between">
+          {/* Terminal Console View */}
+          <div className="mt-2 rounded-2xl bg-[#010410] border border-cyan-500/30 p-5 font-mono text-xs overflow-hidden shadow-inner">
+            <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/10 text-slate-400 text-[11px]">
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-rose-500/80" />
-                <span className="w-3 h-3 rounded-full bg-amber-500/80" />
-                <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
-                <span className="text-xs text-slate-400 ml-2">mcp-runtime@mobrilz-cloud:~</span>
+                <span className="w-2.5 h-2.5 rounded-full bg-red-500" />
+                <span className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
+                <span className="w-2.5 h-2.5 rounded-full bg-green-500" />
+                <span className="text-slate-300 ml-1">mcp-agent-session-live</span>
               </div>
-
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] text-cyan-300 px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20">
-                  {selected.status}
-                </span>
-                <MagneticWrapper strength={0.3}>
-                  <button
-                    type="button"
-                    disabled={isRunning}
-                    onClick={runSimulation}
-                    className="flex items-center gap-1.5 px-3 py-1 rounded-md bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs transition-colors disabled:opacity-50"
-                  >
-                    <Play className="w-3 h-3 fill-current" />
-                    <span>{isRunning ? "Simulating..." : "Run Test"}</span>
-                  </button>
-                </MagneticWrapper>
-              </div>
+              <span className="text-cyan-400">84 tokens/s</span>
             </div>
 
-            {/* Terminal Output Log Area */}
-            <div className="p-6 text-xs text-slate-300 space-y-2.5 overflow-y-auto font-mono flex-1">
-              <div className="text-cyan-400 flex items-center gap-2 pb-2 border-b border-white/5">
-                <span className="text-slate-500">$</span>
-                <span>{selected.command}</span>
-              </div>
+            <div className="text-cyan-300 mb-3 font-semibold">
+              $ {selected.command}
+            </div>
 
-              {displayedLogs.map((log, lIdx) => (
-                <div key={lIdx} className="leading-relaxed">
-                  <span className="text-emerald-400 mr-2">›</span>
-                  <span
-                    className={
-                      log.includes("[DONE]") || log.includes("[STABLE]")
-                        ? "text-emerald-300 font-bold"
-                        : log.includes("[AUTH]") || log.includes("[INFO]")
-                        ? "text-cyan-300"
-                        : "text-slate-300"
-                    }
-                  >
-                    {log}
-                  </span>
+            <div className="space-y-1.5 min-h-[140px] text-slate-300 text-[11px] leading-relaxed">
+              {displayedLogs.map((log, i) => (
+                <div key={i} className="animate-in fade-in slide-in-from-bottom-1 duration-200">
+                  <span className="text-cyan-400">{log.slice(0, log.indexOf("]") + 1)}</span>
+                  <span>{log.slice(log.indexOf("]") + 1)}</span>
                 </div>
               ))}
-
               {isRunning && (
-                <div className="flex items-center gap-2 text-cyan-400 pt-2 animate-pulse">
-                  <span className="h-2 w-2 rounded-full bg-cyan-400" />
-                  <span>Processing sub-routine streams...</span>
+                <div className="flex items-center gap-2 text-cyan-400">
+                  <span className="w-2 h-3.5 bg-cyan-400 animate-pulse" />
+                  <span>Streaming neural token inference...</span>
                 </div>
               )}
-            </div>
-
-            {/* Terminal Status Bar */}
-            <div className="px-5 py-2.5 bg-white/5 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400">
-              <span className="flex items-center gap-1.5">
-                <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
-                Live Architecture Sandbox
-              </span>
-              <span>P99: {selected.latency}</span>
             </div>
           </div>
         </div>
@@ -238,4 +206,3 @@ export function McpStudioD() {
     </section>
   );
 }
-
