@@ -817,3 +817,440 @@ All 37 case studies, 5 reviews, 3 blog posts, 6 FAQ accordions, navigation links
 
 
 
+
+
+---
+
+# Version 7.0: Awwwards-Grade Kinetic 3D Architecture & Interactive Experience
+**Inspired by the Award-Winning Design Architecture of CodeOfSagar.in (Awwwards Featured)**
+
+---
+
+## 🎯 Executive Overview & Design Audit
+An exhaustive evaluation of the existing **Design A (Architectural Studio)** and **Design B (Cybernetic AI Studio)** revealed that while they introduced clean layouts and basic CSS radial glows, they remained fundamentally static in tactile feel:
+* **The Problem with Design A & B:**
+  - **Flat 2D Canvas Fallback:** Hero backgrounds relied on 2D line scripts and CSS gradient borders without true spatial depth, physical lighting, or 3D inertia.
+  - **Absence of Momentum Scrolling:** Standard browser scrolling creates abrupt starts/stops without the silk-like kinetic deceleration characteristic of Awwwards-tier web experiences.
+  - **Static Typography:** Text blocks and navigation links lacked kinetic micro-interactions (e.g. rolling character flips, split-letter reveals).
+  - **Card-Grid Fatigue:** Case studies and portfolio items were trapped in standard 2D bento grids rather than interactive spatial orbits or perspective 3D showcases.
+
+* **The Vision for Version 7.0:**
+  By dissecting and adapting the core engineering patterns of **CodeOfSagar.in**, Mobrilz transitions from an agency brochure into a hypnotic, interactive digital institution. Crucially, **instead of Sagar's anime human character**, the centerpiece is the **Sculpted Procedural 3D Mobrilz "M" Logo Sculpture**—a real-time WebGL asset that interacts with mouse physics, directional lighting, and scroll-pinned camera choreography.
+
+---
+
+## 🔍 Reverse Engineering Analysis (REA) of CodeOfSagar.in
+
+Deep inspection of `https://codeofsagar.in/` uncovers the following architectural foundations:
+
+### 1. Viewport-Pinned Scroll Scrubbing Engine (`--hero-h: 370svh`)
+* **DOM Structure:** `<section id="hero" style="height:var(--hero-h, 370svh)">` with a child `<div id="hero-stage" class="sticky top-0 h-[100svh]">`.
+* **Scrub Timeline:** The viewport is pinned while the user scrolls through 370svh of vertical travel:
+  - **0% to 25% Scroll (The Proposition):** The main hero headline and positioning statement are visible. The 3D scene sits in the foreground with gentle breathing animation.
+  - **25% to 55% Scroll (Typographic Decoupling):** The headline fades out with a blur transform. A massive monumental uppercase name/brand headline (`font-grotesk text-7xl md:text-[9rem]`) appears letter-by-letter with dynamic opacity and kerning shifts.
+  - **55% to 80% Scroll (The Core Thesis):** The brand title translates into a concise, centered thesis statement (*"Where Engineering Meets Enterprise Scale"*). The 3D camera sweeps across the geometry, revealing internal luminous highlights.
+  - **80% to 100% Scroll (Stage Exit):** The sticky stage smoothly dissolves into the architectural content flow below.
+
+### 2. Multi-Mode Environment Lighting Dial (`[data-sky-dial="true"]`)
+* An interactive 3-state control docked at the bottom of the hero stage:
+  - **State 1 (Day / Clear Sky):** Crisp specular reflections, high-key ambient light, sapphire and azure glass highlights.
+  - **State 2 (Cyber Sunset / Twilight):** Warm coral-indigo rim lights, deep violet ambient haze, chromatic edge flares.
+  - **State 3 (Obsidian Matrix / Night):** Deep black void, electric cyan laser edge reflections, refractive luminous core glow.
+* Clicking any state triggers smooth lerping of Three.js light intensities, background sky gradients, and foreground typographic colors.
+
+### 3. Kinetic Rolling Typography (`RollText-module`)
+* Navigation links, action buttons, and section titles utilize a split-span kinetic roll effect:
+  - Text is wrapped in duplicate stacked text spans with overflow hidden.
+  - On hover or scroll trigger, the letters roll vertically in staggered sequence, producing an elite mechanical ticker feel.
+
+### 4. Interactive Work Orbit & 3D Device Showcase (`WorkOrbit-module` & `LaptopShowcase-module`)
+* Instead of static cards, projects are mounted in an interactive circular orbit that rotates based on cursor drag or scroll momentum.
+* A floating 3D responsive device frame renders interactive project walkthroughs with glass screen reflections.
+
+### 5. Architectural Guide Lines & Tactile Grain Overlay (`col-lines` & `grain-surface`)
+* Ultra-subtle, mathematically spaced vertical grid lines (`border-l border-white/5` or `border-slate-200/50`) give an unmistakable structural, blueprint-like foundation.
+* A subtle procedural noise texture (`grain-surface`) gives organic tactile warmth to dark and light backgrounds, eliminating flat digital banding.
+
+---
+
+## 💎 The 3D Mobrilz Procedural Ribbon Logo Architecture
+
+Instead of a human anime model, the hero is centered around a bespoke **3D Mobrilz "M" Ribbon Sculpture**:
+
+```
+           .-""""-.
+         .'        '.
+        /   .-""-.   \         [Three.js Extruded Splines]
+       |   /      \   |        - 3 Organic Fluid Paths matching the authentic SVG
+       |  |  (M)   |  |        - Extruded with smooth bevels and curvature
+        \  \      /  /         - Physical PBR Shader (Transmission 0.92, Roughness 0.12)
+         '. '-..-' .'          - Internal Emissive Cyan/Sapphire Light Core
+           '-....-'            - Dynamic Orbit & Cursor Parallax Damping
+```
+
+* **Geometry:** Three intertwining 3D parametric spline ribbons generated directly from the mathematical paths of `mobrilz-m-logo.svg` (`linear-gradient-1`, `2`, and `3`).
+* **Material Shading:**
+  - **Physical Transmission & Refraction:** Translucent cyber-glass with index of refraction (IOR) of 1.48.
+  - **Iridescent Dispersion:** Chromatic fringing along curved edges catching ambient specular lights.
+  - **Internal Energy Filament:** A pulsating internal light curve radiating the signature Mobrilz cyan (`#64b5f6`) and deep royal blue (`#3779cb`).
+* **Physics & Interactivity:**
+  - **Mouse Tracking Parallax:** Follows mouse pointer with smooth spring inertia (lerp factor 0.05).
+  - **Scroll Scrubbing:** As the user scrolls through the 370svh stage, the 3D logo rotates 360 degrees along the Y-axis, tilts toward the camera, and gracefully scales to anchor the transition.
+  - **Lighting Responsiveness:** Reacts instantaneously to the Day/Sunset/Night lighting dial.
+
+---
+
+## 📐 Mobrilz Website Architecture & Content Structure
+
+The v7.0 architecture structures the entire platform around Mobrilz's core digital engineering identity:
+
+| Stage / Section | Visual & Interactive Format | Core Content & Assets |
+| :--- | :--- | :--- |
+| **0. Global Engine** | Lenis smooth scroll + Architectural `col-lines` + Grain overlay | Inertial scrolling, custom magnetic cursor |
+| **1. Dynamic Island Header** | Suspended frosted pill + `RollText` navigation + Mode toggle | Services, Work (37 Builds), Capabilities, Reviews, Estimator CTA |
+| **2. Pinned 3D Hero Stage (370svh)** | Real-time 3D Mobrilz Logo + Scroll-pinned typographic scrub + Sky Dial | *"Architecting Digital Titans. AI & Software Engineering That Commands Markets."* |
+| **3. Kinetic Typographic Breakout** | Massive letter-by-letter marquee reveal | *"M O B R I L Z"*, *"Engineering High-Impact Systems"* |
+| **4. Architectural Manifesto (`col-lines`)** | Split-screen Swiss grid with real-time outcome counters | 99.9% Uptime, 37+ Flagship Deployments, 100% IP Handover |
+| **5. Interactive Work Orbit / 3D Deck** | Orbital perspective carousel with live project preview frames | Salla, My Town W, European Enterprise, Ketta Solutions, and all 37 builds |
+| **6. Core Engineering Studio** | Interactive capability switchboard with technical spec sheets | Web Engineering, Mobile Ecosystems, Cloud/DevOps, Enterprise AI & MCP |
+| **7. Animated Delivery Highway** | Synchronized laser timeline with milestone deliverable badges | Discovery Blueprint -> Figma Tokens -> Sprint CI/CD -> Zero-Downtime Cutover |
+| **8. Verified Enterprise Proof Ledger** | High-contrast testimonial cards with verified ratings | Christopher Menchaca (My Town W), enterprise reviews |
+| **9. Technical Knowledge Base** | Architectural whitepapers with kinetic hover elevation | Agentic AI, Cloud Migration, Enterprise Scalability |
+| **10. Kinetic Estimator Console** | Concentric breathing radar aura with 3-step interactive modal | Instant project scope, timeline, and budget calculation |
+| **11. Monolithic Blueprint Footer** | Deep obsidian void with authentic illuminated Mobrilz SVG | Direct contact, global offices, technical documentation links |
+
+---
+
+## 🛠️ Step-by-Step Implementation Roadmap
+
+### Phase 1: Engine Foundation & Dependencies
+- [ ] Install lightweight 3D rendering engine (`three` and `@types/three`).
+- [ ] Install smooth momentum scrolling (`@studio-freight/lenis` or `lenis`).
+- [ ] Configure global architectural guidelines (`col-lines`) and subtle procedural noise in CSS.
+
+### Phase 2: Procedural 3D Mobrilz Logo Stage (`Mobrilz3DHeroStage.tsx`)
+- [ ] Author the 3D Mobrilz "M" Ribbon geometry with smooth bevels and high-refraction PBR shaders.
+- [ ] Implement the interactive 3-mode Lighting Dial (Day / Sunset / Night) with smooth color and intensity interpolation.
+- [ ] Build the 370svh scroll-pinned scrubber linking scroll position to 3D logo rotation and letter-by-letter typographic reveals.
+
+### Phase 3: Interactive Micro-Interactions & RollText (`RollText.tsx`)
+- [ ] Implement the kinetic dual-span vertical rolling text animation on hover for links and action buttons.
+- [ ] Integrate the magnetic cursor tracker with context-aware sizing over 3D canvases.
+
+### Phase 4: Spatial Work Orbit & 3D Project Deck (`MobrilzWorkOrbit.tsx`)
+- [ ] Build the interactive orbital project showcase featuring Mobrilz's 37 case studies.
+- [ ] Add perspective tilt and interactive screen preview modal/drawer.
+
+### Phase 5: Complete Page Integration & Verification
+- [ ] Connect the Version 7.0 experience into the design switcher (accessible via `?design=C` or as the elevated kinetic experience).
+- [ ] Verify zero visual regressions, 60fps performance on mobile/desktop, and flawless build verification (`npm run build`).
+
+---
+
+© 2026 Mobrilz Technologies Pvt. Ltd. All rights reserved.
+
+
+---
+
+# Version 8.0: The Cinematic 3D & Kinetic Architecture Synthesis
+**Benchmarked & Reverse-Engineered Against Top 5 Production Repositories & CodeOfSagar.in**
+
+---
+
+## 🎯 Executive Overview & The "Maximum Potential" Mandate
+To elevate Mobrilz into a world-class, award-winning digital experience, we conducted an exhaustive reverse-engineering analysis of 5 elite open-source portfolio repositories alongside **CodeOfSagar.in**:
+1. **`5araang/Nextjs-cinematic-portfolio`**: Cinematic WebGL shaders, OGL 3D circular carousel, refractive glass cursor, and video scrubbing.
+2. **`HasnainIrfan/3d-portfolio`**: Deferred 3D canvas pipeline (`useDeferred3D`), Maath camera rig damping (`easing.damp3`), and pinned horizontal scroll showcases.
+3. **`evanssmiles/portfolio-template`**: Power-curve Lenis momentum physics and expanding click ripple shockwaves (`CursorRipple`).
+4. **`sabin-paudel/portfolio-template`**: Spring magnetic hover wrappers (`MagneticWrapper`), pointer ambient glow (`MouseGlow`), and cybernetic telemetry HUD (`SystemBar`).
+5. **`eldorauiofficial/portfolio-website` (Eldora UI / Magic UI)**: macOS dynamic spring magnification dock (`Dock`) and staggered blur-fade typography (`BlurFadeText`).
+
+---
+
+## 🔬 Reverse Engineering Matrix: 5 Repositories vs. Mobrilz v8.0
+
+| Feature / System | Source Repository | Technical Implementation in Source | Mobrilz Version 8.0 Synthesis |
+| :--- | :--- | :--- | :--- |
+| **3D Centerpiece** | `HasnainIrfan/3d-portfolio` & `codeofsagar.in` | `@react-three/fiber` + `maath` damped camera rig + 370svh pinned scroll stage | **Procedural 3D Mobrilz "M" Ribbon Sculpture**: Real-time glassmorphism, refractive dispersion, Day/Sunset/Night lighting dial, and scroll scrub. (Zero human anime; 100% brand-authentic). |
+| **3D Gallery / Showcase** | `5araang/Nextjs-cinematic-portfolio` | `CircularGallery.jsx` using OGL cylindrical 3D projection with drag inertia | **Interactive 3D Orbital Cylindrical Showcase**: Mobrilz's 37 case studies arranged in an interactive revolving 3D carousel with drag and velocity dampening. |
+| **Pinned Horizontal Deck** | `HasnainIrfan/3d-portfolio` | `pinned-showcase.tsx` (`usePinnedProgress` + `useTransform` + `TRACK_SPRING`) | **Enterprise Flagship Deck**: Pinned horizontal glide showcasing top tier enterprise deployments (Salla, My Town W, European Enterprise). |
+| **Cinematic Background Shader** | `5araang/Nextjs-cinematic-portfolio` | `GradientBlinds.jsx` (OGL) & `Dither.jsx` (R3F Postprocessing) | **Kinetic Gradient Blinds & Atmospheric Shimmer**: Hardware-accelerated OGL blinds reacting to cursor position and lighting mode. |
+| **Momentum Scroll Engine** | `evanssmiles-portfolio-template` | Lenis with power-curve easing `(t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))` | **Silk Momentum Engine**: Lenis with manual scroll restoration and top-edge spring-damped `ProgressBar`. |
+| **Tactile Cursor & Ripples** | `5araang` & `evanssmiles` | `GlassCursor.jsx` (frosted glass) + `CursorRipple.tsx` (click ripples) | **Dual-Layer Tactile Cursor**: Frosted glass lens cursor that snaps magnetically to buttons, accompanied by expanding liquid shockwaves on click. |
+| **Magnetic Physics** | `sabin-paudel/portfolio-template` | `MagneticWrapper.tsx` using Framer Motion `useMotionValue` & `useSpring` | **Tactile Magnetic Elements**: Applied to all primary CTAs, filter pills, and navigation icons. |
+| **Cybernetic Telemetry HUD** | `sabin-paudel/portfolio-template` | `SystemBar.tsx` (live clock, fixed top-right telemetry pill) | **Mobrilz Enterprise HUD**: Displays live UTC sprint clock, global node status (Riyadh / London / San Francisco), and network latency (24ms). |
+| **Navigation Dock** | `eldorauiofficial/portfolio-website` | `Dock.tsx` (Gaussian distance-based magnification curve) | **Floating Dynamic Island + macOS Dock Hybrid**: Suspended frosted glass pill that magnifies icons smoothly on approach. |
+| **Kinetic Typography** | `eldorauiofficial` & `codeofsagar.in` | `BlurFadeText.tsx` (character blur fade) + `RollText` (rolling flip) | **Hybrid Kinetic Typography**: Split-character blur-fade on initial entry, with rolling vertical mechanical flip on hover. |
+
+---
+
+## 🏛️ Comprehensive Architecture & Content Breakdown
+
+### 1. Viewport-Pinned 370svh Hero Stage (`Mobrilz3DHeroStage.tsx`)
+* **Deferred 3D Engine (`useDeferred3D`):** Ensures initial DOM paint is instantaneous (Lighthouse score preserved >95) before mounting WebGL canvas.
+* **Sculpted 3D Mobrilz "M" Sculpture:**
+  - 3 intertwining parametric ribbons with physical transmission shader ($0.92$), roughness ($0.12$), and chromatic edge fringing.
+  - Maath camera rig damping (`easing.damp3`) tracking normalized cursor coordinates `[mouse.x / 10, 1 + mouse.y / 10, 3]`.
+* **Interactive 3-State Lighting Dial:** Day (Sapphire/Clear), Cyber Sunset (Coral/Indigo), and Obsidian Night (Electric Cyan/Void).
+* **Scroll-Scrubbed Storytelling:**
+  - **0%–25%:** Hero proposition *"Architecting Digital Titans. AI & Software Engineering That Commands Markets."*
+  - **25%–55%:** Headline dissolves; monumental typographic reveal *"M O B R I L Z"* emerges letter-by-letter with dynamic kerning.
+  - **55%–80%:** Transition to core engineering thesis with camera zooming through the illuminated ribbon core.
+  - **80%–100%:** Stage seamlessly dissolves into the architectural grid lines (`col-lines`).
+
+### 2. Global Atmospheric Engine & Micro-Interactions
+* **Lenis Momentum Scrolling:** Smooth luxury deceleration across all viewports.
+* **Frosted Glass Cursor + Click Ripples:** Frosted glass lens with magnetic snap and expanding liquid shockwaves.
+* **Ambient Radial Mouse Glow:** Subtle white/cyan radial aura tracking mouse coordinates.
+* **Cybernetic Telemetry HUD:** Fixed header pill displaying live sprint clock, enterprise uptime (99.9%), and active node status.
+* **Spring-Damped Top Progress Bar:** Shimmering cyan-sapphire progress indicator.
+
+### 3. Interactive Case Study Showcase: 3D Cylindrical Orbit + Pinned Deck
+* **3D Cylindrical Orbit (`MobrilzCircularGallery`):** Allows users to drag and spin all 37 enterprise case studies in a continuous 3D cylindrical carousel with realistic momentum.
+* **Flagship Pinned Deck (`MobrilzPinnedShowcase`):** Pinned horizontal scroll track highlighting tier-1 enterprise partnerships (Salla Saudi E-Commerce, My Town W, European Enterprise, Ketta Solutions).
+
+### 4. Interactive Engineering Studio & Capability Switchboard
+* **Architectural Spec Sheets:** Live interactive tabs for Web Engineering, Mobile Ecosystems, Cloud/DevOps, and Enterprise AI & MCP.
+* **Magnetic CTAs (`MagneticWrapper`):** Tactile spring physics pulling buttons toward the user's cursor.
+* **Rolling Mechanical Typography (`RollText`):** Character-by-character vertical roll on hover for buttons, pills, and links.
+
+### 5. Delivery Highway & Enterprise Proof Ledger
+* **Animated Laser Highway:** Synchronized milestone pipeline (Discovery Blueprint $\rightarrow$ Design Tokens $\rightarrow$ Sprint CI/CD $\rightarrow$ Cutover).
+* **Verified Reviews Ledger:** High-contrast testimonial bento cards with verified ratings and trust badges.
+* **Interactive Project Scope Estimator:** Concentric breathing radar aura with 3-step modal.
+
+---
+
+## 🛠️ Step-by-Step Implementation Roadmap
+
+### Phase 1: Dependency Integration & Engine Setup
+- [ ] Install 3D & animation packages: `three`, `@types/three`, `@react-three/fiber`, `@react-three/drei`, `maath`, `lenis`, `ogl`.
+- [ ] Configure global styles: `col-lines`, subtle noise texture, and custom scrollbar in `globals.css`.
+
+### Phase 2: Core Micro-Interaction Primitives
+- [ ] Implement `SmoothScroll.tsx` (Lenis with power curve easing).
+- [ ] Implement `CursorRipple.tsx` & `GlassCursor.tsx` (tactile glass lens + click shockwaves).
+- [ ] Implement `MagneticWrapper.tsx` (Framer Motion spring physics for buttons/pills).
+- [ ] Implement `SystemBar.tsx` (cybernetic telemetry HUD).
+- [ ] Implement `ProgressBar.tsx` (spring-damped viewport progress bar).
+- [ ] Implement `RollText.tsx` & `BlurFadeText.tsx` (kinetic typography).
+
+### Phase 3: Procedural 3D Mobrilz "M" Hero Stage (`Mobrilz3DHeroStage.tsx`)
+- [ ] Author procedural 3D Mobrilz "M" ribbon geometry with physical PBR shaders.
+- [ ] Implement Maath camera damping rig and interactive 3-state Lighting Dial (Day / Sunset / Night).
+- [ ] Build the 370svh scroll-pinned scrubbing stage linking scroll depth to 3D logo rotation and monumental typographic reveals.
+
+### Phase 4: Spatial 3D Showcase (Orbit + Pinned Deck)
+- [ ] Build `MobrilzCircularGallery.tsx` (interactive 3D cylindrical carousel for 37 case studies).
+- [ ] Build `MobrilzPinnedShowcase.tsx` (pinned horizontal scroll deck for flagship enterprise builds).
+
+### Phase 5: Integration, Design Switcher & Build Verification
+- [ ] Integrate into `src/app/page.tsx` as the elevated flagship experience.
+- [ ] Verify zero regressions, 60fps performance on mobile/desktop, and execute `npm run build` cleanly.
+
+---
+
+© 2026 Mobrilz Technologies Pvt. Ltd. All rights reserved.
+
+
+---
+
+# Version 9.0: Full-Page Kinetic Choreography & Version D (Liquid Glass Aurora & Spatial Intelligence Studio)
+**Synthesized from Global Design Intelligence (`ui-ux-pro-max`) & Authentic Mobrilz Brand Engineering**
+
+---
+
+## 🎯 Executive Overview & Scope of Work
+In direct response to executive review, Version 9.0 delivers three critical architectural advancements while keeping **Version A and Version B 100% untouched**:
+1. **Mathematical Brand Authenticity:** Replaces the approximate 3D tube geometry in the hero banner with a **100% authentic extruded 3D Mobrilz "M" Logo**, generated directly from `public/assets/mobrilz-m-logo.svg` via Three.js `SVGLoader` with genuine bevels, physical glassmorphism, and brand gradient stops.
+2. **End-to-End Kinetic Choreography for Design C:** Eliminates static fallbacks across the remainder of the page by engineering dedicated kinetic components for every single section (Capabilities, Delivery Highway, Tech Matrix, Enterprise Guarantees, Reviews Marquee, FAQs, and Estimator).
+3. **Design D — "Liquid Glass Aurora & Spatial Intelligence Studio":** A completely new flagship design inspired by `ui-ux-pro-max` design intelligence (`Liquid Glass`, `Aurora UI`, `Interactive Product Demo`, and `Micro-interactions`), featuring a bioluminescent fluid aurora canvas, an interactive multi-device project sandbox (Desktop/Tablet/Mobile), and a live enterprise MCP terminal playground.
+
+---
+
+## 🔍 Audit & Correction: The Authentic 3D Mobrilz Logo Architecture
+
+### The Problem in Prior Prototyping
+Earlier 3D hero passes utilized Catmull-Rom parametric tube splines that loosely resembled an "M", but diverged from Mobrilz’s trademarked geometry.
+
+### The Version 9.0 Mathematical Solution
+* **SVG Vector Extraction:** Direct parsing of the 3 distinct paths in `public/assets/mobrilz-m-logo.svg`:
+  - **Path 1 (Swooping Diagonal Bridge):** `M118 28c-3 0-5 1-8 5L91 60C85 68 81 74 73 76c-10 3-18 0-25-9...`
+  - **Path 2 (Right Pillar & Finial Loop):** `M99 14c13-18 40-10 43 12 1 9 1 43 0 55-1 14...`
+  - **Path 3 (Left Grounding Wing):** `M49 36c-4-2-8-2-12-1-9 2-10 11-9 22l1 19c0 6...`
+* **Three.js ExtrudeGeometry Pipeline:**
+  - `depth: 6`, `bevelEnabled: true`, `bevelSegments: 6`, `bevelSize: 1.5`, `bevelThickness: 1.5`.
+  - Centered at `(0, 0, 0)` with bounding box normalization.
+* **Physical PBR Shader Application:**
+  - Authentic gradient interpolation matching SVG definitions (`#ffffff` $\rightarrow$ `#64b5f6` $\rightarrow$ `#3779cb`).
+  - Transmission ($0.75$), roughness ($0.12$), clearcoat ($1.0$), and refractive index ($1.52$) creating genuine cyber-glass luminescence.
+
+---
+
+## ⚡ Design C: Complete Full-Page Kinetic Architecture
+
+Every section in Design C is upgraded to support scroll-linked interactivity:
+
+| Section | Kinetic Mechanism | Visual Format |
+| :--- | :--- | :--- |
+| **Hero Stage (370svh)** | Three.js `SVGLoader` authentic extruded logo + Maath camera damping + Sky Dial | Pinned scrub: Proposition $\rightarrow$ Letter-by-letter reveal $\rightarrow$ Engineering thesis |
+| **Flagship Showcase** | Pinned horizontal scroll track with spring inertia | Tier-1 enterprise cards (Salla, My Town W, European Enterprise) |
+| **Spatial Orbit** | 3D cylindrical perspective carousel | Interactive drag & momentum spin across 12 case studies |
+| **Engineering Studio** | Interactive holographic capability switchboard | Live code stream, architecture SLA meters, magnetic category switchers |
+| **Delivery Highway** | Continuous animated laser timeline | Glowing laser highway that fills synchronously with scroll depth |
+| **Technology Matrix** | Circuit grid matrix with glowing chips | Interactive category filters with glowing radial hover spotlights |
+| **Enterprise Guarantees** | Mouse-tracking spotlight bento cards | 3D perspective tilt physics + animated rolling metric counters |
+| **Reviews & Proof** | Dual-row infinite velocity marquee | Pause-on-hover cards with verified trust badges and rating glows |
+| **Diagnostic FAQs** | Spring-damped drawer accordions | Active gradient borders and rotating indicator badges |
+| **Scope Estimator** | Concentric breathing radar aura | Interactive multi-step scope calculator with real-time budget feedback |
+| **Monolithic Footer** | Giant illuminated SVG Mobrilz watermark | Ambient breathing back-glow with rolling typography links |
+
+---
+
+## 🌌 Version D: Liquid Glass Aurora & Spatial Intelligence Studio
+**Architectural Blueprint Generated via Global Design Intelligence (`ui-ux-pro-max`)**
+
+### 1. Aesthetic Foundations & Color Palette
+* **Style Archetype:** `Liquid Glass` + `Aurora UI` + `Interactive Product Demo`.
+* **Color Palette:**
+  - **Deep Space Obsidian:** `#020617` (Base canvas)
+  - **Bioluminescent Aurora Cyan:** `#06b6d4` (Primary illumination)
+  - **Electric Indigo & Royal:** `#6366f1` and `#3779cb` (Secondary gradients)
+  - **Ultraviolet Accent:** `#8b5cf6` (Focal highlights)
+  - **Liquid Glass Frost:** `rgba(255, 255, 255, 0.07)` with `backdrop-filter: blur(24px)` and `border: 1px solid rgba(255, 255, 255, 0.12)`
+* **Typography:** Outfit (Display & Headlines) + Work Sans (Body) + JetBrains Mono (Telemetry & Metrics).
+
+### 2. Standout Interactive Features in Version D
+* **Interactive Bioluminescent Aurora Mesh:**
+  - Hardware-accelerated canvas utilizing organic Simplex noise waves.
+  - Reacts dynamically to mouse speed and cursor trajectory, sending glowing chromatic ripples beneath the authentic Mobrilz Logo.
+* **Interactive Multi-Device Project Sandbox (`DeviceSandboxShowcase.tsx`):**
+  - Allows potential enterprise clients to toggle case studies between **Desktop (16:9)**, **Tablet (4:3)**, and **Mobile (9:19.5 iPhone frame)** with fluid layout morphing.
+* **Live Enterprise MCP Playground (`McpStudioD.tsx`):**
+  - An interactive developer console simulating live production tasks:
+    1. *Test Saudi Salla Catalog Bulk Ingestion (50,000 SKUs)*
+    2. *Execute Vector DB Query & RAG Grounding (28ms latency)*
+    3. *Simulate Multi-Cloud Autoscaling (10,000 req/sec Spike)*
+* **Fluid Morphing Wave Timeline:**
+  - A glowing organic bezier curve connecting project phases from Discovery to Zero-Downtime Cutover.
+
+---
+
+## 🛠️ Step-by-Step Implementation Plan
+
+### Step 1: Authentic 3D Extruded Mobrilz Logo
+- [ ] Upgrade `Mobrilz3DHeroStage.tsx` with Three.js `SVGLoader` to load and parse `/assets/mobrilz-m-logo.svg`.
+- [ ] Generate extruded 3D geometry with bevels, centering, and authentic brand gradient materials.
+
+### Step 2: Full-Page Animation Suite for Design C
+- [ ] Build `ExpertiseKineticC.tsx` (Interactive Holographic Engineering Studio).
+- [ ] Build `ProcessKineticC.tsx` (Continuous Animated Laser Highway).
+- [ ] Build `TechStackKineticC.tsx` (Glowing Circuit Grid Matrix).
+- [ ] Build `WhyUsKineticC.tsx` (Spotlight Bento Guarantees with Animated Counters).
+- [ ] Build `ReviewsKineticC.tsx` (Dual-Row Infinite Velocity Marquee).
+- [ ] Build `FaqKineticC.tsx` (Spring Accordion Drawers).
+
+### Step 3: Architecture & Components for Version D
+- [ ] Build `HeroDesignD.tsx` (Bioluminescent Liquid Aurora Canvas + Authentic Brand Emblem).
+- [ ] Build `DeviceSandboxD.tsx` (Multi-Device Project Previewer).
+- [ ] Build `McpStudioD.tsx` (Live Enterprise Sandbox Terminal).
+- [ ] Build `ProcessDesignD.tsx` (Fluid Wave Timeline).
+- [ ] Build `FooterDesignD.tsx` (Liquid Glass Monolith).
+
+### Step 4: Page Routing & Design Switcher
+- [ ] Wire Design A, Design B, Design C, and Design D into `src/app/page.tsx`.
+- [ ] Ensure Version A and Version B remain 100% untouched.
+- [ ] Update floating design switcher with buttons for all 4 designs:
+  - **Design C (Kinetic 3D Synthesis ★)**
+  - **Design D (Liquid Aurora Spatial ✦)**
+  - **Design B (Cybernetic Void)**
+  - **Design A (Swiss Studio)**
+
+### Step 5: Verification & Production Build
+- [ ] Execute `npm run build` to confirm 0 compilation errors and 4/4 static routes generated cleanly.
+- [ ] Test HTTP 200 response on `http://localhost:3000`.
+
+---
+
+© 2026 Mobrilz Technologies Pvt. Ltd. All rights reserved.
+
+
+---
+
+# Version 10.0: Authentic Mobrilz Brand Restoration & Spatial VisionOS Architecture (Design D Overhaul)
+**Direct Resolution of Hero Contrast/Logo Issues & Synthesis of `Spatial UI (VisionOS)` via `ui-ux-pro-max`**
+
+---
+
+## 🎯 Executive Overview & User Feedback Root-Cause Analysis
+Following executive inspection of the live screenshot (demonstrating the missing/dark logo and low-contrast hero text in Design C), Version 10.0 provides immediate, uncompromising remediation while completely redesigning Version D into an award-winning spatial computing masterpiece:
+
+### 1. Root-Cause Remediation of Design C Hero
+* **The Logo Problem:** The previous asynchronous WebGL loader failed to display the 3D model reliably, leaving an empty red rectangle with a faint torus ring.
+* **The Solution:** The **authentic, original Mobrilz SVG Logo** (`public/assets/mobrilz-m-logo.svg`) is now restored front-and-center as an interactive 3D centerpiece. It is rendered with razor-sharp vector precision, dynamic 3D cursor perspective tilt (`perspective(1200px) rotateX(...) rotateY(...) scale(...)`), an ambient breathing cyan-indigo radial aura, and cosmic particle rings.
+* **The Contrast Problem:** Hero text was previously unreadable due to dark blue-on-navy opacity. It is now upgraded to **high-contrast, luminous `#ffffff` with radiant cyan gradient accents (`from-white via-cyan-100 to-sky-300`) and deep ambient drop-shadows**, ensuring maximum visual punch and instant readability.
+
+---
+
+### 2. Full-Page Kinetic Deployment (Zero Static Sections)
+Every single section across the entire page in both **Design C** and **Design D** now incorporates active, high-impact motion:
+* **Interactive 3D Perspective Hero:** Original Mobrilz logo with mouse tilt physics, monumental letter reveal (`M O B R I L Z`), and 3-mode Lighting Dial.
+* **Pinned Horizontal Flagship Deck:** Scroll-pinned velocity glide across tier-1 enterprise case studies.
+* **Spatial Orbit Carousel:** 3D cylindrical drag-and-spin gallery for 12 portfolio items.
+* **Interactive Holographic Studio:** Live code terminal streaming, real-time SLA gauges, and magnetic tabs.
+* **Animated Laser Highway:** Continuous glowing timeline that fills synchronously with scroll progress.
+* **Circuit Grid Matrix:** Glowing tech chips with category filter physics and radial spotlights.
+* **Spotlight Bento Guarantees:** 3D tilt cards with inner cursor illumination and rolling counters.
+* **Dual-Row Velocity Marquee:** Bi-directional infinite review ticker with 3D elevation on hover.
+* **Spring-Damped FAQs:** VisionOS glass drawer accordions with rotating indicators.
+* **Concentric Breathing Radar:** Pulsating wave rings with real-time sprint estimator.
+
+---
+
+### 3. Redesign of Version D: Spatial UI (VisionOS) & Kinetic Hyper-Depth Studio
+Consulting `global-design-intelligence` (`ui-ux-pro-max` Style #55 `Spatial UI (VisionOS)` and Style #15 `Motion-Driven`), Version D is completely reimagined:
+* **Visual Identity:**
+  - Base: Deep Space Void (`#020617`)
+  - Glass: `backdrop-filter: blur(40px) saturate(180%)`, `background: rgba(255, 255, 255, 0.08)` to `0.16`
+  - Borders: `1px solid rgba(255, 255, 255, 0.18)` with inner specular radiance
+  - Accents: Electric Cyan (`#00f0ff`), Royal Sapphire (`#3779cb`), Vivid Violet (`#8b5cf6`)
+* **Core Interactive Primitives:**
+  - **Spatial Hero Stage:** Floating frosted glass window with 3D gaze/cursor parallax, displaying the authentic illuminated Mobrilz Logo flanked by floating spatial telemetry chips.
+  - **Spatial Multi-Device Sandbox:** Morphing VisionOS window allowing clients to test case studies across Desktop (16:9), Tablet (4:3), and iPhone Mobile (9:19.5).
+  - **Live Enterprise MCP Console:** Interactive sandbox terminal simulating Salla catalog bulk sync, vector RAG query, and multi-cloud autoscaling.
+  - **Spatial Bento Contracts:** Multi-layered frosted glass panels with hover depth elevation (`translateZ(25px)`).
+
+---
+
+## 🛠️ Step-by-Step Implementation Roadmap
+
+### Step 1: Authentic Mobrilz Logo & Contrast Remediation in Hero
+- [ ] Overhaul `Mobrilz3DHeroStage.tsx`:
+  - Embed the authentic original Mobrilz SVG Logo with 3D cursor perspective tilt physics, luminous breathing radial aura, and orbiting particle rings.
+  - Upgrade typography contrast to pure luminous `#ffffff` with cyan-sky gradients and deep shadows.
+  - Verify Day / Sunset / Night dial interactivity.
+
+### Step 2: Full-Page Kinetic Verification for Design C
+- [ ] Connect and verify all kinetic components: `ExpertiseKineticC`, `ProcessKineticC`, `TechStackKineticC`, `WhyUsKineticC`, `ReviewsKineticC`, `FaqKineticC`.
+
+### Step 3: Complete Overhaul of Version D (Spatial VisionOS Studio)
+- [ ] Rebuild `HeroDesignD.tsx` with VisionOS spatial glass pane, 3D gaze parallax, and authentic illuminated Mobrilz logo.
+- [ ] Enhance `DeviceSandboxD.tsx` with 3D spatial window controls and responsive viewport morphing.
+- [ ] Rebuild `WhyUsDesignD.tsx` with true VisionOS glassmorphic tokens (`blur(40px) saturate(180%)`).
+- [ ] Ensure every section in Version D features rich scroll and hover animations.
+
+### Step 4: Routing & 4-Way Switcher
+- [ ] Verify that Version A and Version B remain 100% untouched.
+- [ ] Ensure the 4-way switcher cleanly routes between:
+  - **Design C (Kinetic 3D Synthesis ★)**
+  - **Design D (Spatial VisionOS ✦)**
+  - **Design B (Cybernetic Void)**
+  - **Design A (Swiss Studio)**
+
+### Step 5: Build & Production Verification
+- [ ] Execute `npm run build` to verify 0 compilation errors and 4/4 static routes generated cleanly.
+- [ ] Verify HTTP 200 on `http://localhost:3000`.
+
+---
+
+© 2026 Mobrilz Technologies Pvt. Ltd. All rights reserved.

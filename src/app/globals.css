@@ -4,14 +4,31 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto; /* Let Lenis handle smooth scrolling */
   }
   body {
-    background-color: #fbfcfd;
-    color: #334155;
+    background-color: #060d28;
+    color: #f1f5f9;
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     overflow-x: hidden;
   }
+}
+
+/* Lenis Recommended CSS */
+html.lenis, html.lenis-smooth {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 /* Subtle Ambient Background Grids */
@@ -27,6 +44,86 @@
   background-image: 
     linear-gradient(to right, rgba(55, 121, 203, 0.07) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(55, 121, 203, 0.07) 1px, transparent 1px);
+}
+
+/* Architectural Column Guidelines (Inspired by codeofsagar.in col-lines) */
+.col-lines {
+  position: relative;
+}
+.col-lines::before,
+.col-lines::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+  z-index: 1;
+}
+.col-lines::before {
+  left: 5vw;
+}
+.col-lines::after {
+  right: 5vw;
+}
+
+/* Tactile Grain Overlay */
+.grain-surface {
+  position: relative;
+}
+.grain-surface::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Glass Cursor */
+.glass-cursor-lens {
+  pointer-events: none;
+  position: fixed;
+  z-index: 9999;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: radial-gradient(circle, rgba(100, 181, 246, 0.15) 0%, rgba(9, 20, 63, 0.05) 100%);
+  backdrop-filter: blur(2px);
+  box-shadow: 0 0 16px rgba(55, 121, 203, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              height 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.25s ease,
+              background 0.25s ease;
+}
+.glass-cursor-lens.cursor-hover {
+  border-color: rgba(100, 181, 246, 0.8);
+  background: radial-gradient(circle, rgba(100, 181, 246, 0.28) 0%, rgba(55, 121, 203, 0.15) 100%);
+  box-shadow: 0 0 24px rgba(100, 181, 246, 0.6);
+}
+
+/* Click Ripple Wave */
+@keyframes ripple-expand {
+  0% {
+    transform: translate(-50%, -50%) scale(0.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.8);
+    opacity: 0;
+  }
+}
+.click-ripple {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(100, 181, 246, 0.7);
+  animation: ripple-expand 0.75s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
 }
 
 /* Hide scrollbar for clean UI pills */
